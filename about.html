@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - Weather App</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="shortcut icon" href="img/clear.png" />
+</head>
+<body>
+  <nav class="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="card">
+    <h1>About This App</h1>
+    <p>This Weather Forecasting App allows you to check real-time weather conditions for any city using a weather API.</p>
+    <p>Built with HTML, CSS, and JavaScript.</p>
+
+    <h2>Current Weather in London</h2>
+    <div class="weather">
+      <img src="img/clouds.png" class="weather-icon" alt="Weather Icon" />
+      <h1 class="temp">--°C</h1>
+      <h2 class="city">London</h2>
+      <div class="details">
+        <div class="col">
+          <img src="img/humidity.png" alt="Humidity Icon" />
+          <div>
+            <p class="humidity">--%</p>
+            <p>Humidity</p>
+          </div>
+        </div>
+        <div class="col">
+          <img src="img/wind.png" alt="Wind Icon" />
+          <div>
+            <p class="wind">-- km/h</p>
+            <p>Wind Speed</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const apiKey = "7d5e74e7b112e34001dc87b79a2fc7c3"; // Replace with your OpenWeatherMap API key
+    const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=london";
+
+    fetch(apiUrl + `&appid=${apiKey}`)
+      .then(response => response.json())
+      .then(data => {
+        document.querySelector(".temp").textContent = Math.round(data.main.temp) + "°C";
+        document.querySelector(".humidity").textContent = data.main.humidity + "%";
+        document.querySelector(".wind").textContent = data.wind.speed + " km/h";
+
+        const weatherIcon = document.querySelector(".weather-icon");
+        switch (data.weather[0].main.toLowerCase()) {
+          case "clouds":
+            weatherIcon.src = "img/clouds.png";
+            break;
+          case "clear":
+            weatherIcon.src = "img/clear.png";
+            break;
+          case "rain":
+            weatherIcon.src = "img/rain.png";
+            break;
+          case "drizzle":
+            weatherIcon.src = "img/drizzle.png";
+            break;
+          case "mist":
+            weatherIcon.src = "img/mist.png";
+            break;
+          default:
+            weatherIcon.src = "img/clear.png";
+        }
+      })
+      .catch(() => {
+        document.querySelector(".temp").textContent = "N/A";
+        document.querySelector(".humidity").textContent = "N/A";
+        document.querySelector(".wind").textContent = "N/A";
+      });
+  </script>
+</body>
+</html>
