@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search History | Weather App</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: linear-gradient(to right, #74ebd5, #acb6e5);
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .history-list {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .history-item {
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+    }
+
+    .history-item:last-child {
+      border-bottom: none;
+    }
+
+    .history-item strong {
+      color: #2193b0;
+    }
+
+    .back-btn {
+      display: block;
+      margin: 30px auto 0;
+      text-align: center;
+      text-decoration: none;
+      padding: 10px 20px;
+      background-color: #2193b0;
+      color: white;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #17627c;
+    }
+  </style>
+</head>
+<body>
+  <h1>Weather Search History</h1>
+  <div class="history-list" id="historyList">
+    <!-- Weather history items will go here -->
+  </div>
+
+  <a href="index.html" class="back-btn">← Back to Weather App</a>
+
+  <script src="./script2.js"></script>
+</body>
+</html>
