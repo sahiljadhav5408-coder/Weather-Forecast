@@ -1,0 +1,313 @@
+/* === Reset and Base === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Navbar Styles */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.15); /* transparent white */
+    backdrop-filter: blur(10px); /* blur effect */
+    -webkit-backdrop-filter: blur(10px);
+    padding: 12px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    top: 0;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar li {
+    display: inline-block;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.navbar a:hover {
+    color: #00c3ff;
+    transform: scale(1.1);
+}
+
+/* === Body Background === */
+body {
+    background: linear-gradient(135deg, #1d2b64, #f8cdda); /* Blue to pink gradient */
+    background-size: 400% 400%;
+    animation: galaxyPulse 20s ease infinite; /* Animated background effect */
+    font-family: "Quicksand", sans-serif;
+    color: #f0f0f0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Changed from center to keep space for navbar */
+    padding: 0;
+    margin-top: 60px; /* Adjusted for space between navbar and content */
+    background-attachment: fixed; /* Makes the background stay in place */
+}
+
+/* === Weather Card === */
+.card {
+    width: 100%;
+    max-width: 470px;
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80') no-repeat center center/cover;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 40px 35px;
+    text-align: center;
+    color: #ffffff;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    z-index: 0;
+}
+
+.card * {
+    position: relative;
+    z-index: 1;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* === Header Centering === */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.header h1 {
+    font-size: 3rem;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.header h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #00c3ff;
+    opacity: 0.8;
+}
+
+/* === Search Input === */
+.search {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.search input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.85);
+    color: #333;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    transition: 0.3s ease;
+    font-family: "Quicksand", sans-serif;
+}
+
+.search input:focus {
+    background: #d1f7f0;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 254, 186, 0.5);
+}
+
+.search button {
+    background: #00feba;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search button:hover {
+    background: #5b548a;
+}
+
+.search button img {
+    width: 24px;
+    height: 24px;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.2));
+}
+
+/* === Weather Info === */
+.weather-icon {
+    width: 180px;
+    margin-top: 30px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.weather h1 {
+    font-size: 80px;
+    font-weight: 700;
+    margin: 20px 0 10px;
+}
+
+.weather h2 {
+    font-size: 48px;
+    font-weight: 500;
+    margin-top: -10px;
+    opacity: 0.95;
+}
+
+/* === Weather Details === */
+.details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    padding: 0 10px;
+}
+
+.col {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+}
+
+.col img {
+    width: 40px;
+}
+
+/* === Animations === */
+@keyframes galaxyPulse {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* === Page Transition Animations === */
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* === Home, About, Contact Pages === */
+.page {
+    animation: fadeInPage 1.5s ease-in-out;
+}
+
+/* === Hover Effect for Navbar Links === */
+.navbar a {
+    transition: color 0.3s ease, transform 0.3s ease-in-out;
+    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.3);
+}
+
+.navbar a:hover {
+    color: #00c3ff;
+    transform: scale(1.1);
+}
+
+/* === Navbar positioning and centering === */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.5); /* Slight dark background */
+    z-index: 100;
+}
+
+.navbar ul {
+    display: flex;
+    gap: 50px;
+    padding: 0;
+}
+
+.navbar li {
+    display: inline-block;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.navbar a:hover {
+    color: #00c3ff;
+    transform: scale(1.1);
+}
